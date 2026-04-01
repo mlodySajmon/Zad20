@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator zadań</title>
+</head>
+<body>
+
+<h2>Kalkulator zadań</h2>
+
+<h3>1. Suma i średnia trzech liczb</h3>
+<input type="number" id="a1">
+<input type="number" id="a2">
+<input type="number" id="a3">
+<button onclick="sumaSrednia()">Oblicz</button>
+<p id="wynik1"></p>
+
+<h3>2. Dwie liczby - suma, różnica, iloczyn</h3>
+<input type="number" id="b1">
+<input type="number" id="b2">
+<button onclick="dzialania()">Oblicz</button>
+<p id="wynik2"></p>
+
+<h3>3. Pierwiastek</h3>
+<input type="number" id="c1">
+<button onclick="pierwiastek()">Oblicz</button>
+<p id="wynik3"></p>
+
+<h3>4. Pole kwadratu</h3>
+<input type="number" id="d1">
+<button onclick="kwadrat()">Oblicz</button>
+<p id="wynik4"></p>
+
+<h3>5. Pole prostopadłościanu</h3>
+<input type="number" id="e1" placeholder="a">
+<input type="number" id="e2" placeholder="b">
+<input type="number" id="e3" placeholder="c">
+<button onclick="prostopadloscian()">Oblicz</button>
+<p id="wynik5"></p>
+
+<h3>6. Koło</h3>
+<input type="number" id="f1" placeholder="promień">
+<button onclick="kolo()">Oblicz</button>
+<p id="wynik6"></p>
+
+<h3>7. Koszt przejazdu (360 km)</h3>
+<input type="number" id="g1" placeholder="cena paliwa">
+<button onclick="trasa1()">Oblicz</button>
+<p id="wynik7"></p>
+
+<h3>8. Koszt przejazdu (dowolny)</h3>
+<input type="number" id="h1" placeholder="cena paliwa">
+<input type="number" id="h2" placeholder="długość trasy km">
+<input type="number" id="h3" placeholder="spalanie l/100km">
+<button onclick="trasa2()">Oblicz</button>
+<p id="wynik8"></p>
+
+<h3>9. Lokata</h3>
+<input type="number" id="i1" placeholder="kwota">
+<button onclick="lokata()">Oblicz</button>
+<p id="wynik9"></p>
+
+<script>
+function sumaSrednia() {
+    let a = +document.getElementById("a1").value;
+    let b = +document.getElementById("a2").value;
+    let c = +document.getElementById("a3").value;
+    let suma = a + b + c;
+    let srednia = suma / 3;
+    document.getElementById("wynik1").innerHTML =
+        "Suma: " + suma + "<br>Średnia: " + srednia;
+}
+
+function dzialania() {
+    let a = +document.getElementById("b1").value;
+    let b = +document.getElementById("b2").value;
+    document.getElementById("wynik2").innerHTML =
+        "Suma: " + (a + b) + "<br>Różnica: " + (a - b) + "<br>Iloczyn: " + (a * b);
+}
+
+function pierwiastek() {
+    let a = +document.getElementById("c1").value;
+    document.getElementById("wynik3").innerHTML =
+        "Pierwiastek: " + Math.sqrt(a);
+}
+
+function kwadrat() {
+    let a = +document.getElementById("d1").value;
+    document.getElementById("wynik4").innerHTML =
+        "Pole: " + (a * a);
+}
+
+function prostopadloscian() {
+    let a = +document.getElementById("e1").value;
+    let b = +document.getElementById("e2").value;
+    let c = +document.getElementById("e3").value;
+    let pole = 2 * (a*b + a*c + b*c);
+    document.getElementById("wynik5").innerHTML =
+        "Pole: " + pole;
+}
+
+function kolo() {
+    let r = +document.getElementById("f1").value;
+    let pole = Math.PI * r * r;
+    let obwod = 2 * Math.PI * r;
+    document.getElementById("wynik6").innerHTML =
+        "Pole: " + pole.toFixed(2) + "<br>Obwód: " + obwod.toFixed(2);
+}
+
+function trasa1() {
+    let cena = +document.getElementById("g1").value;
+    let koszt = (360 / 100) * 8 * cena;
+    document.getElementById("wynik7").innerHTML =
+        "Koszt: " + koszt.toFixed(2) + " zł";
+}
+
+function trasa2() {
+    let cena = +document.getElementById("h1").value;
+    let km = +document.getElementById("h2").value;
+    let spalanie = +document.getElementById("h3").value;
+    let koszt = (km / 100) * spalanie * cena;
+    document.getElementById("wynik8").innerHTML =
+        "Koszt: " + koszt.toFixed(2) + " zł";
+}
+
+function lokata() {
+    let kwota = +document.getElementById("i1").value;
+    let zysk = kwota * 0.08;
+    let podatek = zysk * 0.19;
+    let netto = zysk - podatek;
+    document.getElementById("wynik9").innerHTML =
+        "Zysk netto: " + netto.toFixed(2) + " zł";
+}
+</script>
+
+</body>
+</html>
